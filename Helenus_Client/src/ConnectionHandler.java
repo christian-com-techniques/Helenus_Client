@@ -73,15 +73,20 @@ public class ConnectionHandler implements Runnable {
  
                	NodeList n = a.getChildNodes();
             	String value = null;
+            	String type = null;
             	
             	for(int i=0;i<n.getLength();i++) {
                 	if(n.item(i).getNodeName().equals("value")) {
                 		value = n.item(i).getTextContent();
-                		break;
+                	}
+                	if(n.item(i).getNodeName().equals("type")) {
+                		type = n.item(i).getTextContent();
                 	}
             	}
             	
-            	GUI.setResult(value);
+            	if(type.equals("serverresponse")) {
+                	GUI.setResult(value);
+            	}
             	
             }
             

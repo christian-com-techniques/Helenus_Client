@@ -42,6 +42,7 @@ public class GUI extends JFrame {
 		searchresults = new JLabel("");
 		searchresults.setForeground(Color.WHITE);
 		searchresults.setFont(font1);
+		
 		panel3.add(searchresults);
 		panel3.setVisible(false);
 		
