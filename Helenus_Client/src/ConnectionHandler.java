@@ -28,7 +28,7 @@ public class ConnectionHandler implements Runnable {
 	@Override
 	public void run() {
 		
-		int port = conf.intFor("contactPort");
+		int port = conf.intFor("listenPort");
 		
 		DatagramSocket rcvSocket = null;
         try {
@@ -87,6 +87,19 @@ public class ConnectionHandler implements Runnable {
             	if(type.equals("serverresponse")) {
                 	GUI.setResult(value);
             	}
+            	
+            } else if(a.getNodeName() == "writeconsistencycheck") {
+               	
+            	NodeList n = a.getChildNodes();
+            	String value = "";
+            	
+            	for(int i=0;i<n.getLength();i++) {
+                	if(n.item(i).getNodeName().equals("value")) {
+                		value = n.item(i).getTextContent();
+                	}
+            	}
+            	
+            	GUI.setWriteFeedback(value);
             	
             }
             
